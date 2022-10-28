@@ -1,0 +1,180 @@
+Q.1 write a python program for following requirements.
+string:- aaaabbbccd
+output:- 4a3b2c1d
+
+output=4a3b
+
+char=c
+count=1
+
+ans:
+str1="aaaabbbccd"
+output=""
+char=str1[0]
+count=1
+
+i=0
+while i<len(str1):
+    if str1[i]==char:
+        count+=1
+    else:
+        output=output+str(count)+char
+        count=1
+        char=str1[i]
+    if i==len(str1)-1:
+        output=output+str(count)+char
+    i+=1
+
+print(output)
+
+
+Q.2
+Write a python program for following requirements:-
+s1="raju"
+s2="yash"
+length is same:-
+output:-ryaajsuh
+
+length is different:-
+s1="raj"
+s2="yash"
+output:- ryaajsh
+ans:-
+
+ans:-
+
+str1=input("Enter first string:")    #'jay'
+str2=input("Enter first string:")    #yash
+
+output=""
+i,j=0,0
+while i<len(str1) or j<len(str2):
+    if i<len(str1):
+        output=output+str1[i]
+        i+=1
+    if j<len(str2):
+        output=output+str2[j]
+        j+=1
+    
+print(output)
+
+Q.3 guess the output:-
+l=[[2,1] for j in range(2)]
+var=0
+for i in range(2):
+    var+=l[i][j]
+print(var)
+
+ans:- 3
+
+Q.4 what is ord() and chr() functions?
+ans:- The python's ord() is a built-in function which returns unicode/ascii for a given character.
+syntax:- ord(character)
+ex.
+char='$'
+print(ord(char))   #122
+#ex.
+#A-Z :- 65-90
+#a-z :- 97-122
+
+
+chr():- returns character for given ascii/unicode value.
+chr(ord number)
+ex.
+chr(65)--> 'A'
+
+Q.5 Write a python program for converting astring into lowercase.
+string:- ShaNTAnu
+output:- shantanu
+note:- dont use any string methods.
+
+ans:-
+str1=input("Enter the string:")   #ShaNTAnu  B:66   b:- 98     
+
+lower_str=""
+for ch in str1:
+    asc=ord(ch)
+    if asc>64 and asc<91:    #65-90
+        lower_str=lower_str+chr(asc+32)
+    else:
+        lower_str=lower_str+ch
+
+print(lower_str)
+
+Q.what is anonymous/lambda function?
+ans:- A function without a name is called as anonymous functions or lambda functions.
+- normal functions are created using 'def' keyword.
+- lambda functions are created using 'lambda' keyword.
+- No need to write return keyword.
+- only expressions can be used.
+- use:- 
+ex.
+
+def add(x,y):
+    return x+y
+
+lambda x,y:x+y
+
+
+ex.
+print(type(lambda x,y:x+y))
+add=lambda x,y:x+y
+print(add(10,20))
+
+Q. can you write multiple expressions in lambda function?
+ans:- Yes, in the form of tuple.
+ex.
+print(type(lambda x,y:x+y))
+calci=lambda x,y:(x+y,x-y,x*y,x/y)
+add,sub,mul,div=calci(10,20)
+print(add)
+print(mul)
+
+Q.
+* * * * *
+* * * *
+* * *
+* *
+*
+
+ans:- 
+n=int(input("enter the any number "))
+print()
+for i in range(n,0,-1):
+    for j in range (i):
+        print("*",end=" ")
+    print()
+
+ans:-
+
+n=int(input("enter the any number: "))   #5
+print()
+for i in range(n,0,-1):     #5 4 3 2 1
+    for j in range (i):     #j=5
+        print("*",end=" ")
+    print()
+
+Q. difference between implicit and explicit type conversions?
+ans:- implicit:- python sometimes automatically converts one type fo data into another.
+   ex.
+        100+2.5 = 102.5    int+float=float
+    - to avoid data loss.
+    - python automatocally promotes datatypes
+        int ---> float --> str
+
+    explicit :- python developers use built-in functions for changing one types of data into another.
+    - int(),str(),float(),list()  etc.
+
+Q. write a python program for following requirements.
+ans:- input:- [({(})]
+      output:- False
+  
+      input:- [({()})
+      output:- False
+   
+      input:- [({()})]
+      output:- True
+
+
+
+

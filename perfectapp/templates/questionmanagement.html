@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+   
+</head>
+<body>
+    <nav>
+    {{msg}}
+    <a id="s1" href="/" style="float:right;">Log Out</a>
+</nav>
+    <br><br>
+    <form action="">
+        
+    Subject:<input type="text" name="subject" value="{{e.subject}}"><br>
+    Q.No : <input type="number" name="qno" value="{{e.qno}}"><br>
+    Question : <input type="text" name="question" id="" value="{{e.question}}"><br>
+    
+    Options <br>
+    A <input type="text" name="A" value="{{e.a}}" >
+    B <input type="text" name="B" value="{{e.b}}" >
+    C <input type="text" name="C" value="{{e.c}}" >
+    D <input type="text" name="D" value="{{e.d}}" > <br> <br>
+    Answers <input type="text" name="answer" id=""value="{{e.answer}}"><br><br><br>
+
+    <input type="submit" value="Add" formaction="/add"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Update" formaction="/update"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="View" formaction="/view"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Delete" formaction="/delete"><br><br>
+    
+
+    {{ms}}
+
+
+
+
+        
+    
+
+    </form>
+</body>
+</html>

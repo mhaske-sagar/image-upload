@@ -1,0 +1,108 @@
+<h2>Welcome Student Follow the following process to register</h2><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registation</title>
+</head>
+<body>
+    <script>
+        var sam
+        function mailcheck()
+        {
+            var mail=document.form.email.value;
+            var data="?mail="+mail;
+            sam=new XMLHttpRequest();
+            sam.onload=mailrecheck;
+            sam.open("get","/mailcheck"+data,true);
+            sam.send();
+        }
+        function mailrecheck()
+        {
+            var data=sam.responseText;
+            var obj=JSON.parse(data);
+            document.getElementById("s2").innerHTML=obj.msg
+        }
+        var xmlhttp
+        function check()
+        {
+            var username=document.form.username.value;
+            var data="?username="+username;
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.onload=recheck;
+            xmlhttp.open("get","/check"+data,true);
+            xmlhttp.send()
+
+        }
+        function recheck()
+        {
+            var obj=xmlhttp.responseText;
+            var data=JSON.parse(obj);
+            document.getElementById("s1").innerHTML=data.msg;
+        }
+        function strength()
+                {
+            var msg;
+            if (document.form.password.value.length<=5)
+            {
+                document.getElementById("s3").style.color="red";
+                msg="Poor";
+            }
+            else if (document.form.password.value.length<=10)
+            {
+                document.getElementById("s3").style.color="blue";
+                msg="Good";
+            }
+            else 
+            {
+                document.getElementById("s3").style.color="green";
+                msg="Excellent";
+            }
+
+            document.getElementById("s3").innerHTML=msg;
+
+        }
+    </script>
+    <form name="form" action="/register" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th>Username</th>
+                <th><input type="text" name="username" placeholder="enterusername" onblur="check()"></th>
+                <th><span id="s1" style="color:red"></span></th>
+                
+            </tr>
+            <tr>
+                <th>Password</th>
+                <th><input type="password" name="password" onkeyup="strength()"></th>
+                <th><span id="s3"></span></th>
+            </tr>
+            <tr>
+                <th>Retype-password</th>
+                <th><input type="password" name="password1"></th>
+            </tr>
+            <tr>
+                <th>E-mail id</th>
+                <th><input type="email" name="email" onblur="mailcheck()"></th>
+                <th><span id="s2" style="color:red"></span></th>
+            </tr>
+            <tr>
+                <th>Mobile no</th>
+                <th><input type="text" name="mobno"></th>
+
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <th><input type="file" name="photo" ></th>
+            </tr>
+            <tr>
+                <th>ID Proof</th>
+                <th><input type="file" name="file"></th>
+            </tr>
+        </table><br><br>
+        <input type="submit" value="Register"> <button><a href="/" style="text-decoration:none">Already Register</a></button>
+
+    </form>
+</body>
+</html>

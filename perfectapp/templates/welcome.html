@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam</title>
+    <style>
+        nav{
+            background-color: bisque;
+            height: 50px;
+        }
+        #s1{
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        var xmlhttp
+        function ontime()
+        {
+            xmlhttp=new XMLHttpRequest();
+            xmlhttp.onload=time;
+            xmlhttp.open("get","/showtime",true)
+            xmlhttp.send()
+        }
+        setInterval(ontime,1000);
+        function time()
+        {   var a=xmlhttp.responseText;
+            var hrs=Math.floor(xmlhttp.responseText/3600).toString().padStart(2,"0");
+            var min=Math.floor(xmlhttp.responseText/60).toString().padStart(2,"0");
+            var sec=(xmlhttp.responseText-min*60).toString().padStart(2,"0");
+
+            document.getElementById("h1").innerText=hrs+":"+min+":"+sec;
+            if(a==0)
+            {
+                window.location.href="/cal" ;
+            }
+        
+        }
+        
+         function checking()
+         {  var all=document.getElementsByTagName("span");
+            var radiobutton=document.getElementsByName("op");
+            for (var i=0;i<all.length;i++)
+          {
+         var old=document.form.selectedop.value;
+         if (all[i].innerText==old)
+        {
+           radiobutton[i-1].checked=true;
+           all[i].style.color='red';
+           break;
+        }
+        }
+        
+         }
+
+        var sam;
+        function currentans()
+        {
+            sam=new XMLHttpRequest();
+            var subject=document.form.subject.value;
+            var qno=document.form.qno.value;
+            var question=document.form.question.value;
+            var op=document.form.op.value;
+            var answer=document.form.answer.value;
+           
+            var data="?subject="+subject+"&qno="+qno+"&question="+question+"&op="+op+"&answer="+answer;
+            sam.open("get","/currentans"+data,true);
+            sam.send();
+        }
+
+        
+        
+    </script>
+</head>
+<body onload="checking()" onkeydown="return(event.keyCode!=116)" onkeypress="return(event.which!=17)"  >
+    <script>
+        window.oncontextmenu=function(){
+            return false
+        }
+        
+    </script>
+    <nav >
+    username :{{name}} &nbsp;&nbsp;&nbsp; Mail id :{{h}} 
+    <span id="h1"></span>
+
+    <img  id="s1" src="{{o}}" align="right" height="50" width="50" alt="">
+    
+</nav><br>
+
+<form action="" name="form">
+        
+    Subject:<input type="text" name="subject" value="{{subject}}"><br><br>
+    Q.No : <input type="number" name="qno" value="{{qno}}"><br><br>
+    Question : <input type="text" name="question" id="" value="{{question}}"><br><br>
+    
+    Options <br>
+    A <input type="radio" name="op" value="{{a}}" onclick="currentans()"><span>{{a}}</span> &nbsp;&nbsp;
+    B <input type="radio" name="op" value="{{b}}" onclick="currentans()" ><span>{{b}}</span>&nbsp;&nbsp;&nbsp;
+    C <input type="radio" name="op" value="{{c}}" onclick="currentans()"><span>{{c}}</span>&nbsp;&nbsp;&nbsp;
+    D <input type="radio" name="op" value="{{d}}" onclick="currentans()"><span>{{d}}</span><br><br>
+    <input type="text" name="selectedop" value="{{e}}"> <br>
+    <input style="display:none" type="text" name="answer" id=""value="{{answer}}"><br><br>
+
+    <input type="submit" value="Next" formaction="/next">
+    <input type="submit" value="Previous" formaction="/previous"><br><br>
+
+    <input type="submit" value="End Exam" formaction="/cal">
+
+
+
+</body>
+</html>
