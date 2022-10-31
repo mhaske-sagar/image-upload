@@ -6,7 +6,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from perfectapp.models import Question, Score, Userdata, dinalsubmit
-
+def name(request):
+    pass
 def homepage(request):
     return render(request,'login.html')
 def showregister(request):
