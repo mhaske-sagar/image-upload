@@ -64,8 +64,20 @@
             document.getElementById("s3").innerHTML=msg;
 
         }
+        function validateform()
+        {
+            var email=document.form.email.value;
+            var re="/^[a-z0-9+_.-]+@[a-z0-9.-]+$"
+            var x=re.test(email);
+            if (x)
+            {}
+            else{
+                alert("invalid email id")
+                return false
+            }
+        }
     </script>
-    <form name="form" action="/register" method="POST" enctype="multipart/form-data">
+    <form name="form" action="/register" method="POST" onsubmit="return validateform()" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>Username</th>
